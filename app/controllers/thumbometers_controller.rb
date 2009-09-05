@@ -14,7 +14,8 @@ class ThumbometersController < ApplicationController
   # GET /thumbometers/1.xml
   def show
     @thumbometer = Thumbometer.find(params[:id])
-
+    @total_steps = @thumbometer.negative_steps + @thumbometer.positive_steps
+    @div_width = (750/@total_steps).floor
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @thumbometer }

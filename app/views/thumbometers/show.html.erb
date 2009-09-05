@@ -1,3 +1,17 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    colours = createColorPath('9AD9E9','FF0000', <%= @total_steps %>);
+    for (var i=0;i<<%= @thumbometer.current_step %>;i++){
+      $('div#t' + (i+1)).gradient({ from: rgbToHex(colours[i]), to: rgbToHex(colours[i+1]) , direction: 'vertical'});
+    }
+  });
+</script>
+<div id="thumbometer">
+  <div id="bulb"><%= image_tag "thumbometer_bulb.gif"%></div>
+  <%- (1..@total_steps).each do |div_suffix| -%>
+    <div id="t<%= div_suffix %>" style="position: absolute; top: 33px;left: <%= 110 + ((div_suffix - 1)*@div_width) %>px; width: <%= @div_width %>px;" class="thumbometer_step"></div>
+  <%- end %>
+</div>
 <p>
   <b>Negative steps:</b>
   <%=h @thumbometer.negative_steps %>

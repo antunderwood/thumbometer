@@ -9,13 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090905193141) do
+ActiveRecord::Schema.define(:version => 20090905211517) do
 
   create_table "thumbometers", :force => true do |t|
     t.integer  "negative_steps"
     t.integer  "positive_steps"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "current_step"
   end
 
 end

@@ -1,0 +1,7 @@
+#thumbometer{
+  position: relative;
+}
+.thumbometer_step{
+  height: 30px;
+  border: 1px solid black;
+}
