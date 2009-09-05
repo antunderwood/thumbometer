@@ -1,0 +1,22 @@
+<h1>Listing thumbometers</h1>
+
+<table>
+  <tr>
+    <th>Negative steps</th>
+    <th>Positive steps</th>
+  </tr>
+
+<% @thumbometers.each do |thumbometer| %>
+  <tr>
+    <td><%=h thumbometer.negative_steps %></td>
+    <td><%=h thumbometer.positive_steps %></td>
+    <td><%= link_to 'Show', thumbometer %></td>
+    <td><%= link_to 'Edit', edit_thumbometer_path(thumbometer) %></td>
+    <td><%= link_to 'Destroy', thumbometer, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New thumbometer', new_thumbometer_path %>

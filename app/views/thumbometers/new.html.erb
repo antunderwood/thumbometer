@@ -1,0 +1,19 @@
+<h1>New thumbometer</h1>
+
+<% form_for(@thumbometer) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :negative_steps %><br />
+    <%= f.text_field :negative_steps %>
+  </p>
+  <p>
+    <%= f.label :positive_steps %><br />
+    <%= f.text_field :positive_steps %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', thumbometers_path %>
