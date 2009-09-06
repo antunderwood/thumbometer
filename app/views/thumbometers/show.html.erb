@@ -1,8 +1,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
-    colours = createColorPath('9AD9E9','FF0000', <%= @total_steps %>);
     for (var i=0;i<<%= @thumbometer.current_step %>;i++){
-      $('div#t' + (i+1)).gradient({ from: rgbToHex(colours[i]), to: rgbToHex(colours[i+1]) , direction: 'vertical'});
+      draw_thumbometer_div(<%= @total_steps %>, i)
     }
   });
 </script>
@@ -12,16 +11,11 @@
     <div id="t<%= div_suffix %>" style="position: absolute; top: 33px;left: <%= 110 + ((div_suffix - 1)*@div_width) %>px; width: <%= @div_width %>px;" class="thumbometer_step"></div>
   <%- end %>
 </div>
-<p>
-  <b>Negative steps:</b>
-  <%=h @thumbometer.negative_steps %>
-</p>
-
-<p>
-  <b>Positive steps:</b>
-  <%=h @thumbometer.positive_steps %>
-</p>
-
-
-<%= link_to 'Edit', edit_thumbometer_path(@thumbometer) %> |
-<%= link_to 'Back', thumbometers_path %>
+<%= hidden_field_tag "current_step", @thumbometer.current_step %>
+<%= hidden_field_tag "total_steps", @total_steps %>
+<div id="thumbs_down">
+  <%= image_tag "thumbs_down.jpg", :width => "50px", :height => "50px", :onclick => "thumbs_down();" %>
+</div>
+<div id="thumbs_up">
+  <%= image_tag "thumbs_up.jpg", :width => "50px", :height => "50px", :onclick => "thumbs_up();" %>
+</div>

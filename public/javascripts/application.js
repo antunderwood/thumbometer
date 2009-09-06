@@ -29,3 +29,18 @@ toDec = function(hex) {
 toHex = function(dec){
   return dec.toString(16);
 };
+function thumbs_down(){
+  $.sound.play('../sounds/uh_oh.mp3');
+  $('div#t' + $('#current_step').val() + ' > div').remove();
+  $('#current_step').val(parseInt($('#current_step').val())-1);
+  
+}
+function thumbs_up(){
+  //$.sound.play('../sounds/uh_oh.mp3');
+  draw_thumbometer_div(parseInt($('#total_steps').val()), parseInt($('#current_step').val()));
+  $('#current_step').val(parseInt($('#current_step').val())+1);
+}
+function draw_thumbometer_div(total_steps, step_to_draw){
+   colours = createColorPath('9AD9E9','FF0000', total_steps);
+   $('div#t' + (step_to_draw + 1)).gradient({ from: rgbToHex(colours[step_to_draw]), to: rgbToHex(colours[step_to_draw+1]) , direction: 'vertical'});
+}
