@@ -1,1 +1,1 @@
-page.alert('This message is from Rails!');page << "alert('JavaScript with jQuery.');"
+page.alert(@direction);

@@ -85,8 +85,5 @@ class ThumbometersController < ApplicationController
   end
   def thumbs
     @direction = params[:direction]
-    respond_to do |format|
-      format.js{render :layout => false}
-    end
   end
 end

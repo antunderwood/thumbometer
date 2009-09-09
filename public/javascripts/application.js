@@ -29,10 +29,12 @@ toDec = function(hex) {
 toHex = function(dec){
   return dec.toString(16);
 };
+jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} })
 function thumbs_down(){
   $.ajax({
-  url: "thumbs/down",
-  beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript");}
+  url: "thumbs/down.js",
+  type: 'get',
+  dataType: 'script'
   });
   $.sound.play('../sounds/uh_oh.mp3');
   $('div#t' + $('#current_step').val() + ' > div').remove();
