@@ -30,6 +30,10 @@ toHex = function(dec){
   return dec.toString(16);
 };
 function thumbs_down(){
+  $.ajax({
+  url: "thumbs/down",
+  beforeSend: function(xhr) {xhr.setRequestHeader("Accept", "text/javascript");}
+  });
   $.sound.play('../sounds/uh_oh.mp3');
   $('div#t' + $('#current_step').val() + ' > div').remove();
   $('#current_step').val(parseInt($('#current_step').val())-1);
