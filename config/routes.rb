@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.connect 'thumbometers/thumbs/:direction', :controller => 'thumbometers', :action => 'thumbs'
+  map.connect 'thumbometers/thumbs/:direction.:format', :controller => 'thumbometers', :action => 'thumbs'
   map.resources :thumbometers
 
 
