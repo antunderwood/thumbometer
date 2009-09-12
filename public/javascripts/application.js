@@ -42,11 +42,11 @@ function thumbs_down(){
   
 }
 function thumbs_up(){
-  //$.sound.play('../sounds/uh_oh.mp3');
+  $.sound.play('../sounds/woo_hoo.mp3');
   draw_thumbometer_div(parseInt($('#total_steps').val()), parseInt($('#current_step').val()));
   $('#current_step').val(parseInt($('#current_step').val())+1);
 }
 function draw_thumbometer_div(total_steps, step_to_draw){
-   colours = createColorPath('9AD9E9','FF0000', total_steps);
+   colours = createColorPath('FF0000','00FF00', total_steps);
    $('div#t' + (step_to_draw + 1)).gradient({ from: rgbToHex(colours[step_to_draw]), to: rgbToHex(colours[step_to_draw+1]) , direction: 'vertical'});
 }
