@@ -30,10 +30,11 @@ toHex = function(dec){
   return dec.toString(16);
 };
 jQuery.ajaxSetup({ 'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} })
-function thumbs_down(){
+function thumbs_down(thumbometer_id){
   $.ajax({
-  url: "thumbs/down.js",
+  url: 'thumbs/down.js',
   type: 'get',
+  data: {thumbometer_id: thumbometer_id},
   dataType: 'script'
   });
   $.sound.play('../sounds/uh_oh.mp3');

@@ -84,7 +84,15 @@ class ThumbometersController < ApplicationController
     end
   end
   def thumbs
-    thumbometer_step = Thumbometer.find_by_date_and_user_id(Date.today, 1)
-    @direction = params[:direction]
+    thumbometer = Thumbometer.find(params[:thumbometer_id], :include => :user)
+    existing_thumbometer_step = ThumbometerStep.find(:first, :conditions => ["DATE(created_at) = ? AND thumbometer_id = ?", DateTime.now.utc.to_date, thumbometer.id])
+    if existing_thumbometer_step.nil?
+      thumbometer_step = ThumbometerStep.new
+      thumbometer_step.thumbometer = thumbometer
+      thumbometer_step.save
+      @direction = 'saved'
+    else
+      @direction = params[:direction]
+    end
   end
 end
