@@ -8,10 +8,12 @@
 <div id="name"><%= @thumbometer.user.first_name%>'s</div>
 <%= image_tag "thumbometer.png", :id => 'thumbometer_image' %>
 <div id="thumbometer">
+  <div id="body"><%= image_tag "thumbometer_body.gif"%></div>
   <div id="bulb"><%= image_tag "thumbometer_bulb.gif"%></div>
   <%- (1..@total_steps).each do |div_suffix| -%>
-    <div id="t<%= div_suffix %>" style="position: absolute; top: 33px;left: <%= 110 + ((div_suffix - 1)*@div_width) %>px; width: <%= @div_width %>px;" class="thumbometer_step"></div>
+    <div id="t<%= div_suffix %>" style="position: absolute; top: 63px;left: <%= 140 + ((div_suffix - 1)*@div_width) %>px; width: <%= @div_width %>px;" class="thumbometer_step"></div>
   <%- end %>
+  <div id="end"><%= image_tag "thumbometer_end.gif"%></div>
 </div>
 <%= hidden_field_tag "current_step", @thumbometer.current_step %>
 <%= hidden_field_tag "total_steps", @total_steps %>

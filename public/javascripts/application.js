@@ -47,6 +47,6 @@ function thumbs_up(){
   $('#current_step').val(parseInt($('#current_step').val())+1);
 }
 function draw_thumbometer_div(total_steps, step_to_draw){
-   colours = createColorPath('FF0000','00FF00', total_steps);
+   colours = createColorPath('FF0000','00FF00', total_steps+1);
    $('div#t' + (step_to_draw + 1)).gradient({ from: rgbToHex(colours[step_to_draw]), to: rgbToHex(colours[step_to_draw+1]) , direction: 'vertical'});
 }

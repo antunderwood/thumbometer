@@ -10,6 +10,16 @@
 #thumbometer{
   position: relative;
 }
+#bulb{
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+#end{
+  position: absolute;
+  top: 63px;
+  left: 892px;
+}
 .thumbometer_step{
   height: 30px;
   border: 1px solid black;

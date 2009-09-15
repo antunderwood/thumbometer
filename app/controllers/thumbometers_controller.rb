@@ -84,6 +84,7 @@ class ThumbometersController < ApplicationController
     end
   end
   def thumbs
+    thumbometer_step = Thumbometer.find_by_date_and_user_id(Date.today, 1)
     @direction = params[:direction]
   end
 end
