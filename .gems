@@ -1,3 +1,4 @@
 thoughtbot-clearance --source 'http://gems.github.com' --version '0.8.2'
 be9-acl9 --source 'http://gems.github.com'
+aaronchi-jrails --source 'http://gems.github.com'
 
