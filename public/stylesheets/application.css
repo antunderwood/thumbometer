@@ -17,7 +17,7 @@
 }
 #end{
   position: absolute;
-  top: 63px;
+  top: 62px;
   left: 892px;
 }
 .thumbometer_step{
@@ -28,4 +28,9 @@
   float: left;
 }
 #thumbs_up{
+}
+#steps_to_go{
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Arial, "MS Trebuchet", sans-serif;
 }

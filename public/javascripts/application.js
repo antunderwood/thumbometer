@@ -36,16 +36,15 @@ function thumbs_down(thumbometer_id){
   type: 'get',
   data: {thumbometer_id: thumbometer_id},
   dataType: 'script'
-  });
-  $.sound.play('../sounds/uh_oh.mp3');
-  $('div#t' + $('#current_step').val() + ' > div').remove();
-  $('#current_step').val(parseInt($('#current_step').val())-1);
-  
+  });  
 }
-function thumbs_up(){
-  $.sound.play('../sounds/woo_hoo.mp3');
-  draw_thumbometer_div(parseInt($('#total_steps').val()), parseInt($('#current_step').val()));
-  $('#current_step').val(parseInt($('#current_step').val())+1);
+function thumbs_up(thumbometer_id){
+  $.ajax({
+  url: 'thumbs/up.js',
+  type: 'get',
+  data: {thumbometer_id: thumbometer_id},
+  dataType: 'script'
+  });
 }
 function draw_thumbometer_div(total_steps, step_to_draw){
    colours = createColorPath('FF0000','00FF00', total_steps+1);

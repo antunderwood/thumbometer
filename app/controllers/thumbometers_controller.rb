@@ -84,15 +84,27 @@ class ThumbometersController < ApplicationController
     end
   end
   def thumbs
-    thumbometer = Thumbometer.find(params[:thumbometer_id], :include => :user)
-    existing_thumbometer_step = ThumbometerStep.find(:first, :conditions => ["DATE(created_at) = ? AND thumbometer_id = ?", DateTime.now.utc.to_date, thumbometer.id])
+    @thumbometer = Thumbometer.find(params[:thumbometer_id], :include => :user)
+    @total_steps = @thumbometer.negative_steps + @thumbometer.positive_steps
+    current_step = @thumbometer.current_step
+    @direction = params[:direction]
+
+    existing_thumbometer_step = ThumbometerStep.find(:first, :conditions => ["DATE(created_at) = ? AND thumbometer_id = ?", DateTime.now.utc.to_date, @thumbometer.id])
     if existing_thumbometer_step.nil?
+      if current_step < @total_steps && @direction == "up"
+        @thumbometer.current_step = current_step + 1
+        @thumbometer.save!
+      elsif current_step > 1 && @direction == "down"
+        @thumbometer.current_step = current_step -1
+        @thumbometer.save!
+      end
       thumbometer_step = ThumbometerStep.new
-      thumbometer_step.thumbometer = thumbometer
-      thumbometer_step.save
-      @direction = 'saved'
+      thumbometer_step.thumbometer = @thumbometer
+      thumbometer_step.current_step = @thumbometer.current_step
+      thumbometer_step.save!
+      @result = 'success'
     else
-      @direction = params[:direction]
+      @result = 'fail'
     end
   end
 end
