@@ -3,6 +3,19 @@
     for (var i=0;i<<%= @thumbometer.current_step %>;i++){
       draw_thumbometer_div(<%= @total_steps %>, i)
     }
+  soundManager.url = '../swfs';
+  soundManager.debugMode = false; 
+  soundManager.onload = function() {
+    soundManager.createSound({
+      id: 'uh_oh',
+      url: '/sounds/uh_oh.mp3'
+    });
+    soundManager.createSound({
+      id: 'woo_hoo',
+      url: '/sounds/woo_hoo.mp3'
+    });
+    soundManager.play('woo_hoo');
+  }
   });
 </script>
 <div id="name"><%= @thumbometer.user.first_name%>'s</div>
