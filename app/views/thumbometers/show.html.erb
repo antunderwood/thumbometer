@@ -14,24 +14,30 @@
       id: 'woo_hoo',
       url: '/sounds/woo_hoo.mp3'
     });
+    soundManager.createSound({
+      id: 'fanfare',
+      url: '/sounds/fanfare.mp3'
+    });
   }
   });
 </script>
-<div id="name"><%= @thumbometer.user.first_name%>'s</div>
-<%= image_tag "thumbometer.png", :id => 'thumbometer_image' %>
-<div id="thumbometer">
-  <div id="body"><%= image_tag "thumbometer_body.gif"%></div>
-  <%- (1..@total_steps).each do |div_suffix| -%>
-    <div id="t<%= div_suffix %>" style="position: absolute; top: 62px;left: <%= 140 + ((div_suffix - 1)*@div_width) %>px; width: <%= @div_width %>px;" class="thumbometer_step"></div>
-  <%- end %>
-  <div id="end"><%= image_tag "thumbometer_end.gif"%></div>
+<div id="container">
+  <div id="name"><%= @thumbometer.user.first_name%>'s</div>
+  <%= image_tag "thumbometer.png", :id => 'thumbometer_image' %>
+  <div id="thumbometer">
+    <div id="body"><%= image_tag "thumbometer_body.gif"%></div>
+    <%- (1..@total_steps).each do |div_suffix| -%>
+      <div id="t<%= div_suffix %>" style="position: absolute; top: 62px;left: <%= 140 + ((div_suffix - 1)*@div_width) %>px; width: <%= @div_width %>px;" class="thumbometer_step"></div>
+    <%- end %>
+    <div id="end"><%= image_tag "thumbometer_end.gif"%></div>
+  </div>
+  <%= hidden_field_tag "current_step", @thumbometer.current_step %>
+  <%= hidden_field_tag "total_steps", @total_steps %>
+  <div id="thumbs_down">
+    <%= image_tag "thumbs_down.jpg", :width => "80px", :height => "80px",:onclick => "thumbs_down(#{@thumbometer.id});" %>
+  </div>
+  <div id="thumbs_up">
+    <%= image_tag "thumbs_up.jpg", :width => "80px", :height => "80px", :onclick => "thumbs_up(#{@thumbometer.id});" %>
+  </div>
+  <div id="steps_to_go">You have just <%= @total_steps - @thumbometer.current_step %> days without thumb sucking to get the prize</div>
 </div>
-<%= hidden_field_tag "current_step", @thumbometer.current_step %>
-<%= hidden_field_tag "total_steps", @total_steps %>
-<div id="thumbs_down">
-  <%= image_tag "thumbs_down.jpg", :width => "80px", :height => "80px",:onclick => "thumbs_down(#{@thumbometer.id});" %>
-</div>
-<div id="thumbs_up">
-  <%= image_tag "thumbs_up.jpg", :width => "80px", :height => "80px", :onclick => "thumbs_up(#{@thumbometer.id});" %>
-</div>
-<div id="steps_to_go">You have just <%= @total_steps - @thumbometer.current_step %> days without thumb sucking to get the prize</div>
