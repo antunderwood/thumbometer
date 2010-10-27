@@ -3,7 +3,7 @@ class EmailParserController < ApplicationController
   def index
     if params[:to] =~ /cloudmail/
       @incoming_email = IncomingEmail.new(
-        :bodt_text => params[:plain],
+        :body_text => params[:plain],
         :body_html => params[:html],
         :to => clean_param(params[:to]),
         :from => clean_param(params[:from]),
@@ -11,7 +11,7 @@ class EmailParserController < ApplicationController
       )
     else
       @incoming_email = IncomingEmail.new(
-        :bodt_text => params[:text],
+        :body_text => params[:text],
         :body_html => params[:html],
         :to => clean_param(params[:to]),
         :from => clean_param(params[:from]),
