@@ -9,7 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090912225233) do
+ActiveRecord::Schema.define(:version => 20101027094951) do
+
+  create_table "incoming_emails", :force => true do |t|
+    t.string   "to"
+    t.string   "from"
+    t.string   "subject"
+    t.text     "body_text"
+    t.text     "body_html"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name",              :limit => 40
