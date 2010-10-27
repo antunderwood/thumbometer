@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect 'thumbometers/thumbs/:direction.:format', :controller => 'thumbometers', :action => 'thumbs'
   map.resources :thumbometers
 
-
+  map.connect 'email_parser', :controller => 'email_parser', :action => 'index', :method => 'post'
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
