@@ -1,13 +1,23 @@
 class EmailParserController < ApplicationController
   skip_before_filter :verify_authenticity_token
   def index
-    @incoming_email = IncomingEmail.new(
-      :text => params[:text],
-      :html => params[:html],
-      :to => clean_param(params[:to]),
-      :from => clean_param(params[:from]),
-      :subject => clean_param(params[:subject])
-    )
+    if params[:to] =~ /cloudmail/
+      @incoming_email = IncomingEmail.new(
+        :bodt_text => params[:plain],
+        :body_html => params[:html],
+        :to => clean_param(params[:to]),
+        :from => clean_param(params[:from]),
+        :subject => clean_param(params[:subject])
+      )
+    else
+      @incoming_email = IncomingEmail.new(
+        :bodt_text => params[:text],
+        :body_html => params[:html],
+        :to => clean_param(params[:to]),
+        :from => clean_param(params[:from]),
+        :subject => clean_param(params[:subject])
+      )
+    end
     if request.post?
       @incoming_email.save
     end
